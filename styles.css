@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+}
+
+#info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    pointer-events: none;
+    z-index: 100;
+    border: 1px solid rgba(220, 190, 130, 0.3);
+}
+
+#info h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #e6c88a;
+    text-shadow: 0 0 12px rgba(230, 200, 138, 0.5);
+    letter-spacing: 2px;
+}
+
+#fps {
+    color: #ffd27f;
+    font-weight: bold;
+}
+
+.hint {
+    margin-top: 10px;
+    opacity: 0.7;
+    font-size: 12px;
+    color: #d8c9a8;
+}
+
+/* Tweakpane's root container overflows the viewport once enough folders are
+   expanded (Bloom/Cinematic FX get clipped below the fold) — cap it to the
+   viewport height and let it scroll instead. */
+.tp-dfwv {
+    max-height: calc(100vh - 16px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(220, 190, 130, 0.4) rgba(0, 0, 0, 0.2);
+}
+
+.tp-dfwv::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tp-dfwv::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tp-dfwv::-webkit-scrollbar-thumb {
+    background: rgba(220, 190, 130, 0.4);
+    border-radius: 4px;
+}
