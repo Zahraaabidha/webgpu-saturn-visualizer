@@ -3,7 +3,7 @@
 ![Saturn Visualizer screenshot](public/screenshot.png)
 
 
-**Live demo:** [webgpu-saturn-visualize.vercel.app](https://webgpu-saturn-visualize.vercel.app/)
+**Live demo:** [webgpu-saturn-visualize.vercel.app](https://webgpu-saturn-visualizer.vercel.app/)
 
 A real-time, physically-flavoured Saturn renderer for the browser — an oblate,
 turbulently-banded gas giant with real NASA/JPL-derived surface detail, a
