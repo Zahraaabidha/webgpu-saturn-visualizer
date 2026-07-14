@@ -177,6 +177,10 @@ const defaultConfig = {
   // Background music
   musicVolume: 1.0,
   musicMuted: false,
+
+  // Starting camera view
+  cameraPosition: { x: 0, y: 12, z: 34 },
+  cameraTarget: { x: 0, y: 0, z: 0 },
 };
 
 const config = loadConfig(defaultConfig);
@@ -189,8 +193,8 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 2000);
-camera.position.set(0, 12, 34);
-camera.lookAt(0, 0, 0);
+camera.position.set(config.cameraPosition.x, config.cameraPosition.y, config.cameraPosition.z);
+camera.lookAt(config.cameraTarget.x, config.cameraTarget.y, config.cameraTarget.z);
 
 const renderer = new THREE.WebGPURenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -208,7 +212,7 @@ controls.dampingFactor = 0.05;
 controls.rotateSpeed = 0.5;
 controls.minDistance = 12;
 controls.maxDistance = 200;
-controls.target.set(0, 0, 0);
+controls.target.set(config.cameraTarget.x, config.cameraTarget.y, config.cameraTarget.z);
 
 // ============================================================================
 // CAMERA ANIMATION
@@ -274,7 +278,11 @@ const ui = new SaturnUI(config, {
     saturn.regenerate();
   },
 
-  onSaveConfig: () => saveConfig(config),
+  onSaveConfig: () => {
+    config.cameraPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z };
+    config.cameraTarget = { x: controls.target.x, y: controls.target.y, z: controls.target.z };
+    saveConfig(config);
+  },
 
   onClearConfig: () => {
     clearConfig();
